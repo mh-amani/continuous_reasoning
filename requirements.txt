@@ -1,0 +1,32 @@
+# --------- pytorch --------- #
+torch==2.8.0
+lightning>=2.1.0
+torchmetrics
+
+# --------- hydra --------- #
+hydra-core
+hydra-colorlog
+hydra-optuna-sweeper
+omegaconf
+
+# --------- others --------- #
+rootutils       # standardizing the project root setup
+pre-commit      # hooks for applying linters on commit
+rich            # beautiful text formatting in terminal
+pytest          # tests
+einops
+
+datasets==3.0.0
+
+ipython
+jsonlines
+numpy
+pandas
+debugpy
+scikit-learn
+scipy
+tqdm
+transformers
+wandb
+
+
