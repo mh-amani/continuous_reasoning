@@ -1,0 +1,9 @@
+defaults:
+  - default
+
+_target_: src.models.linear.LinearLitModel
+
+model_params:
+  in_features: 32
+  out_features: 64
+  bias: false

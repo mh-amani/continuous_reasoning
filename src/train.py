@@ -113,10 +113,10 @@ def main(cfg: DictConfig) -> Optional[float]:
     :return: Optional[float] with optimized metric value.
     """
     
-    import debugpy
-    debugpy.listen(("0.0.0.0", 5678))  # Or another port
-    print("Waiting for debugger to attach...")
-    debugpy.wait_for_client()
+    # import debugpy
+    # debugpy.listen(("0.0.0.0", 5678))  # Or another port
+    # print("Waiting for debugger to attach...")
+    # debugpy.wait_for_client()
 
     # apply extra utilities
     # (e.g. ask for tags if none are provided in cfg, print cfg tree, etc.)

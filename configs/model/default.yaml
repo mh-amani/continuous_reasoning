@@ -1,15 +1,11 @@
-_target_: src.models.sigmae_lit_module_base.SigmaeLitModuleBase
+_target_: src.models.base.LitModuleBase
 
 model_params:
   compile: false # compile model for faster training with pytorch 2.0
-  
   # Enable/disable saving samples from forward pass (saves to JSONL files)
   save_samples_enabled: true
-
   # Number of samples to save per epoch per stage (learn/val/test) - taken from first batch
   num_samples_to_save: 10
-
-  # Whether to also log saved samples to wandb (tokens + intermediate outputs for xzx/zxz)
   save_samples_to_wandb: true
 
 optimizer:
@@ -35,3 +31,4 @@ scheduler:
     frequency: 1 # corresponds to updating the learning rate after every `frequency` epoch/step
     monitor: ${model.model_params.monitor}
     strict: False
+

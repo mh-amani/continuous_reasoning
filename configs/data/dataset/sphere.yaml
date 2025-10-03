@@ -8,4 +8,4 @@ class_path:
     test: '${...dataset_path}/test.parquet'
     validation: '${...dataset_path}/validation.parquet'
 
-dataset_path: 'data/scan/simple_validation_2048_test_2048_parallel_512'
+dataset_path: 'data/sphere/train_512_validation_2048_test_2048_'
