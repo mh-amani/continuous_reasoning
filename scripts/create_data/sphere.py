@@ -44,25 +44,19 @@ def return_dataset_dict(kwargs):
     Xte, yte, Ate, x0te = create_data(kwargs['test_size'], kwargs['d'], kwargs['L'], kwargs['T'], kwargs['l'],  kwargs['eps'], rng)
     dataset_dict = datasets.DatasetDict({
         'train': datasets.Dataset.from_dict({
-            'x_0': Xtr[:, 0].tolist(), 
-            'x_1': Xtr[:, 1].tolist(),
-            'x_2': Xtr[:, 2].tolist(),
+            'x': Xtr, 
             'y': ytr.tolist(),
             'A': Atr,
             'x0': x0tr
         }),
         'validation': datasets.Dataset.from_dict({
-            'x_0': Xte[:, 0].tolist(), 
-            'x_1': Xte[:, 1].tolist(),
-            'x_2': Xte[:, 2].tolist(),
+            'x': Xte,
             'y': yte.tolist(),
             'A': Ate,
             'x0': x0te
         }),
         'test': datasets.Dataset.from_dict({
-            'x_0': Xte[:, 0].tolist(), 
-            'x_1': Xte[:, 1].tolist(),
-            'x_2': Xte[:, 2].tolist(),
+            'x': Xte,
             'y': yte.tolist(),
             'A': Ate,
             'x0': x0te

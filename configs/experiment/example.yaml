@@ -21,7 +21,7 @@ trainer:
 #     monitor: ${model.model_params.monitor}
 
 data:
-  batch_size: 2
+  batch_size: 8
 
 model:
   optimizer:

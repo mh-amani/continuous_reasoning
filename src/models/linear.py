@@ -38,7 +38,9 @@ class LinearLitModel(LitModuleBase):
         :param x: A tensor of images.
         :return: A tensor of logits.
         """
-        x, y = batch
+        x = batch['x']
+        x_theta = (x[:, -l:, :] * theta[None, :, None]).sum(axis=1)
+        X_next = X_theta @ Theta.T  # (n, d)
         logits = self.model(x)
         return logits
 

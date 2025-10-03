@@ -3,6 +3,7 @@ from lightning import LightningDataModule
 from torch.utils.data import DataLoader, Dataset
 import hydra
 from functools import partial
+import torch
 
 class PLDataModule(LightningDataModule):
     """
@@ -88,7 +89,7 @@ class PLDataModule(LightningDataModule):
             batch_size=self.batch_size_per_device,
             num_workers=self.num_workers,
             pin_memory=self.pin_memory,
-            # collate_fn=collate_fn,
+            collate_fn=self.collate_fn,
             shuffle=True,
             persistent_workers=True
         )
@@ -124,7 +125,7 @@ class PLDataModule(LightningDataModule):
             batch_size=self.batch_size_per_device,
             num_workers=self.num_workers,
             pin_memory=self.pin_memory,
-            # collate_fn=collate_fn,
+            collate_fn=self.collate_fn,
             shuffle=False,
             persistent_workers=True
         )
@@ -154,9 +155,11 @@ class PLDataModule(LightningDataModule):
         pass
 
     @staticmethod
-    def collate_fn(batch, tokenizer_x, tokenizer_z):
-        raise NotImplementedError("This method must be implemented in the subclass.")
-        
+    def collate_fn(batch):
+        outputs = {}
+        for keys in batch[0].keys():
+            outputs[keys] = torch.stack([torch.tensor(item[keys]) for item in batch])
+        return outputs
 
 if __name__ == "__main__":
     _ = PLDataModule("path/to/dataset", [0.8, 0.1], [0.7, 0.3])
